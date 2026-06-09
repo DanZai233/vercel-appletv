@@ -1,13 +1,13 @@
 export default function AnimeLoading() {
   return (
-    <main className="min-h-screen bg-[#07090d] px-5 py-8 text-white sm:px-8 lg:px-12">
+    <main className="min-h-screen overflow-x-clip bg-[#07090d] px-4 py-8 text-white sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-12 flex items-center justify-between">
+        <div className="mb-12 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="h-10 w-24 animate-pulse rounded-md bg-white/10" />
           <div className="h-8 w-28 animate-pulse rounded-md bg-white/10" />
         </div>
         <div className="grid gap-8 lg:grid-cols-[300px_1fr]">
-          <div className="aspect-[2/3] max-w-[300px] animate-pulse rounded-lg bg-white/10" />
+          <div className="aspect-[2/3] w-full max-w-[240px] justify-self-center animate-pulse rounded-lg bg-white/10 sm:max-w-[300px] lg:justify-self-start" />
           <div className="space-y-5">
             <div className="h-8 w-40 animate-pulse rounded-md bg-white/10" />
             <div className="h-16 max-w-2xl animate-pulse rounded-md bg-white/10" />

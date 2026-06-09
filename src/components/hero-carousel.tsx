@@ -78,7 +78,7 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
   }
 
   return (
-    <section className="relative flex min-h-[74vh] items-end overflow-hidden border-b border-white/10">
+    <section className="relative flex min-h-[100svh] items-end overflow-hidden border-b border-white/10 sm:min-h-[78vh]">
       <div className="absolute inset-0">
         {slides.map((anime, index) => (
           <div
@@ -108,17 +108,17 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
           </div>
         ))}
       </div>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,#07090d_0%,rgba(7,9,13,0.84)_38%,rgba(7,9,13,0.36)_70%,#07090d_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,9,13,0.48)_0%,rgba(7,9,13,0.88)_38%,#07090d_100%)] sm:bg-[linear-gradient(90deg,#07090d_0%,rgba(7,9,13,0.84)_38%,rgba(7,9,13,0.36)_70%,#07090d_100%)]" />
       <div className="absolute inset-x-0 top-0 z-10 border-b border-white/10 bg-black/20 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-4 sm:flex-nowrap sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 sm:flex-nowrap sm:gap-3 sm:px-8 sm:py-4 lg:px-12">
           <Link
             href={withLocale("/", locale)}
-            className="flex items-center gap-2 font-semibold"
+            className="order-1 flex min-w-0 flex-1 items-center gap-2 font-semibold sm:order-none sm:flex-none"
           >
             <SiteMark />
-            AniDeck
+            <span className="truncate">AniDeck</span>
           </Link>
-          <div className="hidden rounded-md border border-white/15 bg-white/10 p-1 sm:flex">
+          <div className="order-3 flex rounded-md border border-white/15 bg-white/10 p-1 sm:order-none">
             {LOCALES.map((item) => (
               <Link
                 className={`rounded px-2 py-1 text-xs font-semibold transition ${
@@ -133,10 +133,10 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
               </Link>
             ))}
           </div>
-          <SiteLinks />
+          <SiteLinks className="order-2 shrink-0 sm:order-none" />
           <form
             action="/"
-            className="order-last flex h-10 w-full items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 text-sm text-white shadow-sm sm:order-none sm:max-w-md"
+            className="order-4 flex h-10 w-full items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 text-sm text-white shadow-sm sm:order-none sm:max-w-md"
           >
             <Search className="h-4 w-4 shrink-0 text-white/55" />
             <input type="hidden" name="lang" value={locale} />
@@ -157,7 +157,7 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
         </div>
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-8 px-5 pb-12 pt-28 sm:px-8 lg:grid-cols-[0.34fr_0.66fr] lg:px-12">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-8 px-4 pb-10 pt-40 sm:px-8 sm:pb-12 sm:pt-32 lg:grid-cols-[0.34fr_0.66fr] lg:px-12">
         <Link
           href={withLocale(`/anime/${active.id}`, locale)}
           className="group hidden aspect-[2/3] overflow-hidden rounded-lg border border-white/15 bg-white/10 shadow-[0_28px_80px_rgba(0,0,0,0.45)] transition duration-300 hover:-translate-y-1 hover:border-white/35 lg:block"
@@ -183,7 +183,7 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
               {formatStatus(active.status)}
             </span>
           </div>
-          <h1 className="max-w-3xl text-4xl font-semibold leading-tight sm:text-6xl">
+          <h1 className="max-w-3xl break-words text-3xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
             {titleForLocale(active, locale)}
           </h1>
           <div className="mt-4 grid max-w-2xl gap-2 text-sm sm:grid-cols-3">
@@ -204,10 +204,10 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
               </span>
             ))}
           </div>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-7 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
             <Link
               href={withLocale(`/anime/${active.id}`, locale)}
-              className="inline-flex h-11 items-center gap-2 rounded-md bg-white px-4 text-sm font-semibold text-black transition hover:bg-cyan-100"
+              className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-semibold text-black transition hover:bg-cyan-100 sm:w-auto"
             >
               <Play className="h-4 w-4 fill-current" />
               {t.details}
@@ -217,17 +217,17 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
                 href={primarySource.url}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-11 items-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 text-sm font-semibold text-white transition hover:border-white/45 hover:bg-white/16"
+                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-md border border-white/20 bg-white/10 px-4 text-sm font-semibold text-white transition hover:border-white/45 hover:bg-white/16 sm:w-auto"
               >
                 <ExternalLink className="h-4 w-4" />
                 {t.openSource}
               </a>
             ) : null}
             {hasMultipleSlides ? (
-              <div className="flex items-center gap-2">
+              <div className="flex w-full items-center gap-2 sm:w-auto">
                 <button
                   aria-label={t.heroPrevious}
-                  className="grid h-10 w-10 place-items-center rounded-md border border-white/15 bg-white/10 text-white transition hover:border-white/35 hover:bg-white/16"
+                  className="grid h-10 flex-1 place-items-center rounded-md border border-white/15 bg-white/10 text-white transition hover:border-white/35 hover:bg-white/16 sm:w-10 sm:flex-none"
                   onClick={() => changeSlide(-1)}
                   type="button"
                 >
@@ -235,7 +235,7 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
                 </button>
                 <button
                   aria-label={t.heroNext}
-                  className="grid h-10 w-10 place-items-center rounded-md border border-white/15 bg-white/10 text-white transition hover:border-white/35 hover:bg-white/16"
+                  className="grid h-10 flex-1 place-items-center rounded-md border border-white/15 bg-white/10 text-white transition hover:border-white/35 hover:bg-white/16 sm:w-10 sm:flex-none"
                   onClick={() => changeSlide(1)}
                   type="button"
                 >
@@ -310,7 +310,7 @@ function TitleChip({ label, value }: { label: string; value?: string }) {
       <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/45">
         {label}
       </div>
-      <div className="line-clamp-2 min-h-10 text-sm leading-5 text-white/80">
+      <div className="line-clamp-2 min-h-10 break-words text-sm leading-5 text-white/80">
         {value}
       </div>
     </div>

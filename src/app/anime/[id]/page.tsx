@@ -91,7 +91,7 @@ export default async function AnimeDetail({
   const rows = titleRows(anime);
 
   return (
-    <main className="min-h-screen bg-[#07090d] text-white">
+    <main className="min-h-screen overflow-x-clip bg-[#07090d] text-white">
       <section className="relative overflow-hidden border-b border-white/10">
         {anime.bannerImage ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -102,8 +102,8 @@ export default async function AnimeDetail({
           />
         ) : null}
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#07090d_0%,rgba(7,9,13,0.9)_42%,rgba(7,9,13,0.54)_100%)]" />
-        <div className="relative z-10 mx-auto max-w-7xl px-5 pb-12 pt-6 sm:px-8 lg:px-12">
-          <div className="mb-12 flex flex-wrap items-center justify-between gap-3">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 pb-12 pt-5 sm:px-8 sm:pt-6 lg:px-12">
+          <div className="mb-10 flex flex-wrap items-start justify-between gap-3 sm:mb-12 sm:items-center">
             <Link
               href={withLocale("/", locale)}
               className="inline-flex h-10 items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/16"
@@ -111,8 +111,8 @@ export default async function AnimeDetail({
               <ArrowLeft className="h-4 w-4" />
               {t.back}
             </Link>
-            <div className="flex flex-wrap items-center justify-end gap-3">
-              <div className="hidden rounded-md border border-white/15 bg-white/10 p-1 sm:flex">
+            <div className="flex w-full flex-wrap items-center justify-between gap-2 sm:w-auto sm:justify-end sm:gap-3">
+              <div className="flex rounded-md border border-white/15 bg-white/10 p-1">
                 {LOCALES.map((item) => (
                   <Link
                     className={`rounded px-2 py-1 text-xs font-semibold transition ${
@@ -127,16 +127,16 @@ export default async function AnimeDetail({
                   </Link>
                 ))}
               </div>
-              <SiteLinks />
-              <div className="flex items-center gap-2 text-sm font-semibold">
+              <SiteLinks className="shrink-0" />
+              <div className="flex min-w-0 items-center gap-2 text-sm font-semibold">
                 <SiteMark />
-                AniDeck
+                <span className="truncate">AniDeck</span>
               </div>
             </div>
           </div>
 
           <div className="grid gap-8 lg:grid-cols-[300px_1fr] lg:items-end">
-            <div className="aspect-[2/3] max-w-[300px] overflow-hidden rounded-lg border border-white/15 bg-white/10 shadow-[0_28px_80px_rgba(0,0,0,0.45)]">
+            <div className="aspect-[2/3] w-full max-w-[240px] justify-self-center overflow-hidden rounded-lg border border-white/15 bg-white/10 shadow-[0_28px_80px_rgba(0,0,0,0.45)] sm:max-w-[300px] lg:justify-self-start">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={anime.coverImage}
@@ -144,7 +144,7 @@ export default async function AnimeDetail({
                 className="h-full w-full object-cover"
               />
             </div>
-            <div className="max-w-4xl">
+            <div className="min-w-0 max-w-4xl">
               <div className="mb-4 flex flex-wrap gap-2 text-xs font-medium">
                 <span className="rounded-md border border-cyan-300/25 bg-cyan-300/10 px-2 py-1 text-cyan-100">
                   {formatFormat(anime.format)}
@@ -156,7 +156,7 @@ export default async function AnimeDetail({
                   {formatSeason(anime.season, anime.seasonYear)}
                 </span>
               </div>
-              <h1 className="text-4xl font-semibold leading-tight sm:text-6xl">
+              <h1 className="break-words text-3xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
                 {titleForLocale(anime, locale)}
               </h1>
               <div className="mt-4">
@@ -169,7 +169,7 @@ export default async function AnimeDetail({
                   <TitleChip label={t.titleEn} value={rows.en} />
                 </div>
               </div>
-              <p className="mt-5 max-w-3xl whitespace-pre-line text-sm leading-7 text-white/72 sm:text-base">
+              <p className="mt-5 line-clamp-8 max-w-3xl whitespace-pre-line break-words text-sm leading-7 text-white/72 sm:line-clamp-none sm:text-base">
                 {anime.description || t.pending}
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
@@ -218,7 +218,7 @@ export default async function AnimeDetail({
         </div>
       </section>
 
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_360px] lg:px-12">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-12">
         <div className="space-y-10">
           <section className="space-y-5">
             <div>
@@ -226,7 +226,7 @@ export default async function AnimeDetail({
                 <UsersRound className="h-4 w-4" />
                 {t.charactersKicker}
               </div>
-              <h2 className="text-2xl font-semibold sm:text-3xl">
+              <h2 className="break-words text-2xl font-semibold sm:text-3xl">
                 {t.characters}
               </h2>
             </div>
@@ -260,7 +260,7 @@ export default async function AnimeDetail({
                 <Play className="h-4 w-4" />
                 Episodes
               </div>
-              <h2 className="text-2xl font-semibold sm:text-3xl">
+              <h2 className="break-words text-2xl font-semibold sm:text-3xl">
                 {t.episodes}
               </h2>
             </div>
@@ -292,14 +292,14 @@ export default async function AnimeDetail({
           </section>
         </div>
 
-        <aside className="space-y-6">
+        <aside className="min-w-0 space-y-6">
           <section className="space-y-4">
             <div>
               <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-fuchsia-200">
                 <UsersRound className="h-4 w-4" />
                 Moegirl
               </div>
-              <h2 className="text-2xl font-semibold">{t.moegirlCatalog}</h2>
+              <h2 className="break-words text-2xl font-semibold">{t.moegirlCatalog}</h2>
             </div>
             <MoegirlList
               emptyLabel={t.noMoegirlCharacters}
@@ -314,7 +314,7 @@ export default async function AnimeDetail({
                 <ShieldCheck className="h-4 w-4" />
                 Sources
               </div>
-              <h2 className="text-2xl font-semibold">{t.officialSources}</h2>
+              <h2 className="break-words text-2xl font-semibold">{t.officialSources}</h2>
             </div>
             <SourceList
               officialSearchLabel={t.officialSearch}
@@ -329,7 +329,7 @@ export default async function AnimeDetail({
                 <LinkIcon className="h-4 w-4" />
                 Discovery
               </div>
-              <h2 className="text-2xl font-semibold">{t.discovery}</h2>
+              <h2 className="break-words text-2xl font-semibold">{t.discovery}</h2>
             </div>
             <SourceList
               officialSearchLabel={t.officialSearch}
@@ -349,7 +349,7 @@ function TitleChip({ label, value }: { label: string; value?: string }) {
       <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/45">
         {label}
       </div>
-      <div className="line-clamp-2 min-h-10 text-sm leading-5 text-white/80">
+      <div className="line-clamp-2 min-h-10 break-words text-sm leading-5 text-white/80">
         {value}
       </div>
     </div>
@@ -373,7 +373,7 @@ function Metric({
         <Icon className="h-4 w-4 text-cyan-200" />
         {label}
       </div>
-      <p className="text-xs leading-5 text-white/55">{value}</p>
+      <p className="break-words text-xs leading-5 text-white/55">{value}</p>
       {detail ? <p className="text-xs leading-5 text-white/45">{detail}</p> : null}
     </div>
   );
@@ -439,25 +439,25 @@ function CharacterCard({
           {character.description}
         </p>
       ) : null}
-      <div className="grid grid-cols-2 border-t border-white/10">
+      <div className="grid border-t border-white/10 sm:grid-cols-2">
         <a
           href={character.anilistUrl}
           target="_blank"
           rel="noreferrer"
-          className="flex min-h-10 items-center justify-between border-r border-white/10 px-3 text-xs font-semibold text-cyan-200 transition hover:bg-white/5"
+          className="flex min-h-10 items-center justify-between gap-2 border-b border-white/10 px-3 text-xs font-semibold text-cyan-200 transition hover:bg-white/5 sm:border-b-0 sm:border-r"
         >
-          {aniListLabel}
-          <ExternalLink className="h-3.5 w-3.5" />
+          <span className="min-w-0 truncate">{aniListLabel}</span>
+          <ExternalLink className="h-3.5 w-3.5 shrink-0" />
         </a>
         <a
           href={character.moegirlSearchUrl}
           target="_blank"
           rel="noreferrer"
           title={character.moegirlSearchQuery}
-          className="flex min-h-10 items-center justify-between px-3 text-xs font-semibold text-fuchsia-200 transition hover:bg-white/5"
+          className="flex min-h-10 items-center justify-between gap-2 px-3 text-xs font-semibold text-fuchsia-200 transition hover:bg-white/5"
         >
-          {searchLabel}
-          <ExternalLink className="h-3.5 w-3.5" />
+          <span className="min-w-0 truncate">{searchLabel}</span>
+          <ExternalLink className="h-3.5 w-3.5 shrink-0" />
         </a>
       </div>
     </article>
@@ -483,7 +483,7 @@ function EpisodeLink({
         <img
           src={episode.thumbnail}
           alt=""
-          className="h-14 w-20 rounded-md object-cover"
+          className="h-14 w-20 shrink-0 rounded-md object-cover"
           loading="lazy"
         />
       ) : (
@@ -497,7 +497,7 @@ function EpisodeLink({
         </span>
         <span className="mt-1 flex items-center gap-1 text-xs text-cyan-200">
           {openLabel}
-          <ExternalLink className="h-3 w-3" />
+          <ExternalLink className="h-3 w-3 shrink-0" />
         </span>
       </span>
     </a>
@@ -531,7 +531,7 @@ function MoegirlList({
           className="flex min-h-12 items-center justify-between gap-3 rounded-lg border border-white/10 bg-[#11141a] px-3 py-2 text-sm font-semibold text-white outline-none transition hover:-translate-y-0.5 hover:border-white/30 focus-visible:-translate-y-0.5 focus-visible:border-white/60"
           key={page.url}
         >
-          <span className="min-w-0">
+          <span className="min-w-0 flex-1">
             <span className="block truncate">{page.title}</span>
             <span className="text-xs font-normal text-white/45">
               {openLabel}
@@ -571,7 +571,7 @@ function SourceList({
           className="flex min-h-12 items-center justify-between gap-3 rounded-lg border border-white/10 bg-[#11141a] px-3 py-2 text-sm font-semibold text-white outline-none transition hover:-translate-y-0.5 hover:border-white/30 focus-visible:-translate-y-0.5 focus-visible:border-white/60"
           key={`${source.site}-${source.url}`}
         >
-          <span className="min-w-0">
+          <span className="min-w-0 flex-1">
             <span className="block truncate">{source.site}</span>
             <span className="text-xs font-normal text-white/45">
               {source.type === "search" ? officialSearchLabel : source.type}

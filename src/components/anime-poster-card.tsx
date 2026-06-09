@@ -15,7 +15,7 @@ export function AnimePosterCard({ anime, locale }: AnimePosterCardProps) {
   return (
     <Link
       href={withLocale(`/anime/${anime.id}`, locale)}
-      className="group block w-[150px] shrink-0 outline-none sm:w-[170px] lg:w-[190px]"
+      className="group block w-[136px] shrink-0 outline-none sm:w-[170px] lg:w-[190px]"
     >
       <div className="relative aspect-[2/3] overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-[0_18px_50px_rgba(0,0,0,0.35)] transition duration-300 group-hover:-translate-y-1 group-hover:border-white/35 group-focus-visible:-translate-y-1 group-focus-visible:border-white/60">
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -33,7 +33,7 @@ export function AnimePosterCard({ anime, locale }: AnimePosterCardProps) {
         </div>
       </div>
       <div className="mt-3 space-y-1">
-        <h3 className="line-clamp-2 min-h-[2.75rem] text-sm font-semibold leading-snug text-white">
+        <h3 className="line-clamp-2 min-h-[2.75rem] break-words text-sm font-semibold leading-snug text-white">
           {titleForLocale(anime, locale)}
         </h3>
         <p className="truncate text-xs text-white/45">

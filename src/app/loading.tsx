@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <main className="min-h-screen bg-[#07090d] px-5 py-8 text-white sm:px-8 lg:px-12">
+    <main className="min-h-screen overflow-x-clip bg-[#07090d] px-4 py-8 text-white sm:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="h-8 w-32 animate-pulse rounded-md bg-white/10" />
@@ -22,7 +22,7 @@ export default function Loading() {
         <div className="mt-14 flex gap-4 overflow-hidden">
           {Array.from({ length: 6 }).map((_, index) => (
             <div
-              className="h-72 w-44 shrink-0 animate-pulse rounded-lg bg-white/10"
+              className="h-64 w-36 shrink-0 animate-pulse rounded-lg bg-white/10 sm:h-72 sm:w-44"
               key={index}
             />
           ))}

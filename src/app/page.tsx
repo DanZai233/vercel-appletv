@@ -31,7 +31,7 @@ export default async function Home({ searchParams }: HomeProps) {
   ]);
 
   return (
-    <main className="min-h-screen bg-[#07090d] text-white">
+    <main className="min-h-screen overflow-x-clip bg-[#07090d] text-white">
       <HeroCarousel
         items={home.trending.length ? home.trending : [home.hero]}
         locale={locale}
@@ -40,13 +40,13 @@ export default async function Home({ searchParams }: HomeProps) {
 
       <div className="relative z-10 -mt-4 space-y-12 pb-20 pt-8">
         {query ? (
-          <section className="space-y-4 px-5 sm:px-8 lg:px-12">
+          <section className="space-y-4 px-4 sm:px-8 lg:px-12">
             <div>
               <div className="mb-2 flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-cyan-200">
                 <Search className="h-4 w-4" />
                 Search
               </div>
-              <h2 className="text-2xl font-semibold text-white sm:text-3xl">
+              <h2 className="break-words text-2xl font-semibold text-white sm:text-3xl">
                 {t.searchResults(query)}
               </h2>
             </div>

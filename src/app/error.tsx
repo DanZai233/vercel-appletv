@@ -10,17 +10,17 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <main className="grid min-h-screen place-items-center bg-[#07090d] px-5 text-white">
+    <main className="grid min-h-screen place-items-center overflow-x-clip bg-[#07090d] px-4 text-white">
       <div className="max-w-md text-center">
         <p className="mb-3 text-sm font-medium uppercase tracking-[0.16em] text-rose-200">
           Data Source Error
         </p>
-        <h1 className="text-3xl font-semibold">数据源暂时不稳定</h1>
+        <h1 className="break-words text-3xl font-semibold">数据源暂时不稳定</h1>
         <p className="mt-3 text-sm leading-6 text-white/60">
           外部接口可能限流或短暂不可用，刷新后通常会恢复。
         </p>
         {error.digest ? (
-          <p className="mt-3 font-mono text-xs text-white/35">
+          <p className="mt-3 break-all font-mono text-xs text-white/35">
             {error.digest}
           </p>
         ) : null}
