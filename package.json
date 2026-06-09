@@ -2,6 +2,17 @@
   "name": "anideck",
   "version": "0.1.0",
   "private": true,
+  "description": "Apple TV style anime information and official source aggregator.",
+  "author": "DanZai233",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/DanZai233/AniDeck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DanZai233/AniDeck/issues"
+  },
+  "homepage": "https://anime.danzaii.cn",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
