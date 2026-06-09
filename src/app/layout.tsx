@@ -13,8 +13,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vercel-appletv.vercel.app"),
   title: "AniDeck",
   description: "Apple TV 风格的二次元资讯与番剧来源聚合站。",
+  openGraph: {
+    title: "AniDeck",
+    description: "Apple TV 风格的二次元资讯与番剧来源聚合站。",
+    siteName: "AniDeck",
+    type: "website",
+    url: "https://vercel-appletv.vercel.app",
+  },
 };
 
 export default function RootLayout({

@@ -16,6 +16,9 @@ Apple TV 风格的二次元资讯与番剧来源聚合站，适合部署到 Verc
 - 搜索：`/?q=番名`
 - JSON API：`/api/anime`、`/api/anime?q=...`、`/api/anime/[id]`、`/api/news`
 - Vercel Cron：`/api/refresh` 每日预热缓存
+- 运维检查：`/api/health` 返回 AniList/RSS 数据源状态
+- SEO 基础：`/robots.txt`、`/sitemap.xml`、Open Graph metadata
+- 体验兜底：页面 loading skeleton 与数据源错误页
 
 ## 合法边界
 
@@ -50,4 +53,4 @@ NEWS_FEEDS=Anime News Network|https://www.animenewsnetwork.com/all/rss.xml?ann-e
 vercel deploy -y
 ```
 
-如果要让 `vercel.json` 里的 Cron 在生产环境执行，请在 Vercel 项目里设置 `CRON_SECRET`。当前 Cron 是每日一次，Hobby 计划可用；Pro 计划可以按需要改成小时级。
+如果设置了 `CRON_SECRET`，`/api/refresh` 会校验 `Authorization: Bearer <secret>`；不设置时该接口会开放预热公共缓存。当前 Cron 是每日一次，Hobby 计划可用；Pro 计划可以按需要改成小时级。
