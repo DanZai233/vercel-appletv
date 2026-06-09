@@ -55,6 +55,10 @@ export const COPY = {
     titleJa: "日本語",
     titleEn: "English",
     pending: "待补充",
+    heroPrevious: "上一部热门番剧",
+    heroNext: "下一部热门番剧",
+    heroCarousel: "热门番剧轮播",
+    heroSelect: "切换到",
   },
   ja: {
     searchPlaceholder: "作品を検索",
@@ -102,6 +106,10 @@ export const COPY = {
     titleJa: "日本語",
     titleEn: "English",
     pending: "未補完",
+    heroPrevious: "前の人気作品",
+    heroNext: "次の人気作品",
+    heroCarousel: "人気作品カルーセル",
+    heroSelect: "切り替え:",
   },
   en: {
     searchPlaceholder: "Search anime",
@@ -149,6 +157,10 @@ export const COPY = {
     titleJa: "日本語",
     titleEn: "English",
     pending: "Pending",
+    heroPrevious: "Previous trending anime",
+    heroNext: "Next trending anime",
+    heroCarousel: "Trending anime carousel",
+    heroSelect: "Switch to",
   },
 } satisfies Record<Locale, Record<string, string | ((query: string) => string)>>;
 
