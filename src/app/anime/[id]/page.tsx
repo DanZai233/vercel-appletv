@@ -234,6 +234,7 @@ export default async function AnimeDetail({
               <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                 {anime.characters.map((character) => (
                   <CharacterCard
+                    aniListLabel={t.openAniList}
                     character={character}
                     key={character.id}
                     roleLabels={{
@@ -380,11 +381,13 @@ function Metric({
 
 function CharacterCard({
   character,
+  aniListLabel,
   roleLabels,
   searchLabel,
   voiceLabel,
 }: {
   character: AnimeCharacter;
+  aniListLabel: string;
   roleLabels: Record<string, string>;
   searchLabel: string;
   voiceLabel: string;
@@ -436,15 +439,27 @@ function CharacterCard({
           {character.description}
         </p>
       ) : null}
-      <a
-        href={character.moegirlSearchUrl}
-        target="_blank"
-        rel="noreferrer"
-        className="flex min-h-10 items-center justify-between border-t border-white/10 px-3 text-xs font-semibold text-cyan-200 transition hover:bg-white/5"
-      >
-        {searchLabel}
-        <ExternalLink className="h-3.5 w-3.5" />
-      </a>
+      <div className="grid grid-cols-2 border-t border-white/10">
+        <a
+          href={character.anilistUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="flex min-h-10 items-center justify-between border-r border-white/10 px-3 text-xs font-semibold text-cyan-200 transition hover:bg-white/5"
+        >
+          {aniListLabel}
+          <ExternalLink className="h-3.5 w-3.5" />
+        </a>
+        <a
+          href={character.moegirlSearchUrl}
+          target="_blank"
+          rel="noreferrer"
+          title={character.moegirlSearchQuery}
+          className="flex min-h-10 items-center justify-between px-3 text-xs font-semibold text-fuchsia-200 transition hover:bg-white/5"
+        >
+          {searchLabel}
+          <ExternalLink className="h-3.5 w-3.5" />
+        </a>
+      </div>
     </article>
   );
 }

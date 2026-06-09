@@ -7,7 +7,7 @@ Apple TV 风格的二次元资讯与番剧来源聚合站，适合部署到 Verc
 - 首页海报墙：热门趋势、正在更新、本季新番、即将开播
 - 中日英三语：`?lang=zh`、`?lang=ja`、`?lang=en` 切换界面与主标题
 - 番剧详情页：海报、横幅、三语标题、简介、评分、集数、放送时间、标签
-- 角色信息：从 AniList 拉角色头像、角色名、日语声优和简介
+- 角色信息：从 AniList 拉角色头像、角色名、日语声优和简介，并提供 AniList 角色详情入口
 - 萌娘百科：用 MediaWiki `opensearch` 自动匹配作品页，并从作品页内链提取萌百收录的角色条目
 - 中文名/中文简介：从 Bangumi 公开 API 补充 `name_cn` 与中文摘要
 - 来源聚合：优先展示 AniList 与 Jikan/MAL 返回的官方 streaming/external links，并提供更多官方平台搜索入口
@@ -23,7 +23,7 @@ Apple TV 风格的二次元资讯与番剧来源聚合站，适合部署到 Verc
 
 “播放源”在这里指官方平台播放页或官方平台搜索页，例如 Crunchyroll、Netflix、HIDIVE、Disney+、Hulu、Prime Video、Apple TV、Bilibili、爱奇艺、腾讯视频、优酷、ABEMA、dアニメストア、U-NEXT、Niconico、TVer、Bandai Channel、YouTube 官方、Muse Asia、Ani-One Asia、木棉花等。不同数据源不一定提供逐集链接；拿不到时会显示平台入口，而不是伪造可播放地址。
 
-萌娘百科内容只做标题、入口链接和轻量索引，不搬运长正文。角色卡的基础资料来自 AniList；萌百模块显示该作品页中可识别的萌百角色条目。
+萌娘百科内容只做标题、入口链接和轻量索引，不搬运长正文。角色卡的基础资料来自 AniList；萌百模块显示该作品页中可识别的萌百角色条目。角色卡上的萌百搜索会优先使用中文别名，没有中文名时才退回日文名或英文名，避免把番名拼进搜索词导致无结果。
 
 ## 本地开发
 

@@ -36,6 +36,8 @@ export type AnimeCharacter = {
     nativeName?: string;
     image?: string | null;
   };
+  anilistUrl: string;
+  moegirlSearchQuery: string;
   moegirlSearchUrl: string;
 };
 
@@ -514,7 +516,7 @@ function mapMedia(media: RawMedia): AnimeCard {
   const title = pickTitle(media.title);
   const sourceLinks = buildSourceLinks(media, title);
   const streamingEpisodes = normalizeStreamingEpisodes(media.streamingEpisodes);
-  const characters = normalizeCharacters(media.characters?.edges, title);
+  const characters = normalizeCharacters(media.characters?.edges);
 
   return {
     id: media.id,
@@ -759,10 +761,7 @@ function extractMoegirlLinks(html: string): MoegirlPage[] {
   return [...links.values()];
 }
 
-function normalizeCharacters(
-  edges?: RawCharacterEdge[] | null,
-  animeTitle?: string,
-): AnimeCharacter[] {
+function normalizeCharacters(edges?: RawCharacterEdge[] | null): AnimeCharacter[] {
   const characters: AnimeCharacter[] = [];
 
   for (const edge of edges ?? []) {
@@ -775,6 +774,11 @@ function normalizeCharacters(
 
     const voiceActor = edge.voiceActors?.[0];
     const description = cleanSpoilers(cleanText(node.description ?? ""));
+    const moegirlSearchQuery = pickMoegirlCharacterQuery({
+      alternativeNames: node.name?.alternative ?? [],
+      name,
+      nativeName: node.name?.native ?? undefined,
+    });
 
     characters.push({
       id: node.id,
@@ -791,13 +795,32 @@ function normalizeCharacters(
             image: voiceActor.image?.medium,
           }
         : undefined,
-      moegirlSearchUrl: buildMoegirlSearchUrl(
-        [name, node.name?.native, animeTitle].filter(Boolean).join(" "),
-      ),
+      anilistUrl: `https://anilist.co/character/${node.id}`,
+      moegirlSearchQuery,
+      moegirlSearchUrl: buildMoegirlSearchUrl(moegirlSearchQuery),
     });
   }
 
   return characters;
+}
+
+function pickMoegirlCharacterQuery(character: {
+  alternativeNames: string[];
+  name: string;
+  nativeName?: string;
+}): string {
+  const chineseAlias = character.alternativeNames.find(hasChineseText);
+
+  return (
+    chineseAlias ??
+    (character.nativeName && character.nativeName !== character.name
+      ? character.nativeName
+      : character.name)
+  );
+}
+
+function hasChineseText(value: string): boolean {
+  return /[\u3400-\u9fff]/.test(value);
 }
 
 function buildMoegirlSearchUrl(query: string): string {
