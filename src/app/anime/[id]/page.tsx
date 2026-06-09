@@ -8,7 +8,6 @@ import {
   RadioTower,
   ShieldCheck,
   Star,
-  Tv,
   UsersRound,
 } from "lucide-react";
 import type { Metadata } from "next";
@@ -20,6 +19,8 @@ import type {
   SourceLink,
   StreamingEpisode,
 } from "@/lib/anilist";
+import { SiteLinks } from "@/components/site-links";
+import { SiteMark } from "@/components/site-mark";
 import { getAnimeById } from "@/lib/anilist";
 import {
   formatAiringTime,
@@ -102,7 +103,7 @@ export default async function AnimeDetail({
         ) : null}
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#07090d_0%,rgba(7,9,13,0.9)_42%,rgba(7,9,13,0.54)_100%)]" />
         <div className="relative z-10 mx-auto max-w-7xl px-5 pb-12 pt-6 sm:px-8 lg:px-12">
-          <div className="mb-12 flex items-center justify-between">
+          <div className="mb-12 flex flex-wrap items-center justify-between gap-3">
             <Link
               href={withLocale("/", locale)}
               className="inline-flex h-10 items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 text-sm font-semibold text-white transition hover:border-white/35 hover:bg-white/16"
@@ -110,7 +111,7 @@ export default async function AnimeDetail({
               <ArrowLeft className="h-4 w-4" />
               {t.back}
             </Link>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center justify-end gap-3">
               <div className="hidden rounded-md border border-white/15 bg-white/10 p-1 sm:flex">
                 {LOCALES.map((item) => (
                   <Link
@@ -126,10 +127,9 @@ export default async function AnimeDetail({
                   </Link>
                 ))}
               </div>
+              <SiteLinks />
               <div className="flex items-center gap-2 text-sm font-semibold">
-                <span className="grid h-8 w-8 place-items-center rounded-md bg-white text-black">
-                  <Tv className="h-4 w-4" />
-                </span>
+                <SiteMark />
                 AniDeck
               </div>
             </div>

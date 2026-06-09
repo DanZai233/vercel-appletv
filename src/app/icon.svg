@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="AniDeck">
+  <defs>
+    <linearGradient id="screen" x1="20" x2="108" y1="18" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67e8f9"/>
+      <stop offset="0.48" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#f472b6"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="34" x2="86" y1="28" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.18"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#07090d"/>
+  <rect x="18" y="24" width="92" height="70" rx="16" fill="url(#screen)"/>
+  <rect x="25" y="31" width="78" height="56" rx="11" fill="#090b12" opacity="0.88"/>
+  <path d="M57 48.5 78 60.6 57 72.8V48.5Z" fill="#fff"/>
+  <path d="M34 43c5.5-6 13.5-9.5 23.4-10.3" stroke="url(#shine)" stroke-linecap="round" stroke-width="6"/>
+  <path d="M47 103h34" stroke="#f8fafc" stroke-linecap="round" stroke-width="8"/>
+  <path d="M64 94v10" stroke="#f8fafc" stroke-linecap="round" stroke-width="8"/>
+  <circle cx="93" cy="36" r="4" fill="#67e8f9"/>
+</svg>

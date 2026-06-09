@@ -10,10 +10,11 @@ import {
   RadioTower,
   Search,
   ShieldCheck,
-  Tv,
 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { SiteLinks } from "@/components/site-links";
+import { SiteMark } from "@/components/site-mark";
 import type { AnimeCard } from "@/lib/anilist";
 import { formatAiringTime, formatFormat, formatStatus } from "@/lib/display";
 import {
@@ -109,14 +110,12 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
       </div>
       <div className="absolute inset-0 bg-[linear-gradient(90deg,#07090d_0%,rgba(7,9,13,0.84)_38%,rgba(7,9,13,0.36)_70%,#07090d_100%)]" />
       <div className="absolute inset-x-0 top-0 z-10 border-b border-white/10 bg-black/20 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-5 py-4 sm:flex-nowrap sm:px-8 lg:px-12">
           <Link
             href={withLocale("/", locale)}
             className="flex items-center gap-2 font-semibold"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-md bg-white text-black">
-              <Tv className="h-4 w-4" />
-            </span>
+            <SiteMark />
             AniDeck
           </Link>
           <div className="hidden rounded-md border border-white/15 bg-white/10 p-1 sm:flex">
@@ -134,9 +133,10 @@ export function HeroCarousel({ items, locale, query }: HeroCarouselProps) {
               </Link>
             ))}
           </div>
+          <SiteLinks />
           <form
             action="/"
-            className="flex h-10 w-full max-w-md items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 text-sm text-white shadow-sm"
+            className="order-last flex h-10 w-full items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 text-sm text-white shadow-sm sm:order-none sm:max-w-md"
           >
             <Search className="h-4 w-4 shrink-0 text-white/55" />
             <input type="hidden" name="lang" value={locale} />
